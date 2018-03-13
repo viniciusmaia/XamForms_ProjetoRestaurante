@@ -8,10 +8,19 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Entregadores"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <fab:android.support.design.widget.FloatingActionButton x:Arguments="{x:Static formsAndroid:Forms.Context}"  src="ic_add"/>
+            <ListView ItemsSource="{Binding ListaEntregadores}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Nome}" Style="{DynamicResource ListItemTextStyle}"/>
+                                <Label Text="{Binding Telefone}" Style="{DynamicResource ListItemDetailStyle}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<Button Text="Adicionar" Clicked="{Binding AdicionarCommand}"/>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
