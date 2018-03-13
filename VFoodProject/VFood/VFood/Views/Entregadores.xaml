@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fab="clr-namespace:Android.Widget;assembly=Xamarin.Android.Support.Design;targetPlatform=Android"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="VFood.Views.Entregadores">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Entregadores"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <fab:android.support.design.widget.FloatingActionButton x:Arguments="{x:Static formsAndroid:Forms.Context}"  src="ic_add"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
