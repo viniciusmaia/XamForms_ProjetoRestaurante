@@ -1,26 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:fab="clr-namespace:Android.Widget;assembly=Xamarin.Android.Support.Design;targetPlatform=Android"
+             xmlns:formsDroid="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.Platform.Android;targetPlatform=Android"
+             xmlns:droidViews="clr-namespace:Xamarin.Forms;assembly=VFood.Droid.CustomViews;targetPlatform=Android"
+             xmlns:converters="clr-namespace:VFood.Converters;assembly=VFood"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="VFood.Views.Entregadores">
+             x:Class="VFood.Views.Entregadores"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding ListaEntregadores}">
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness" Android="16,16,16,16" iOS="20,0,0,0"/>
+            </StackLayout.Padding>
+            <ActivityIndicator 
+                IsRunning="{Binding IsCarregando}" 
+                IsVisible="{Binding IsCarregando}" 
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <ListView ItemsSource="{Binding ListaEntregadores}" RowHeight="60">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior 
+                        EventName="ItemTapped" 
+                        Command="{Binding EntregadorSelectCommand}" 
+                        EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"/>
+                </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding Nome}" Style="{DynamicResource ListItemTextStyle}"/>
-                                <Label Text="{Binding Telefone}" Style="{DynamicResource ListItemDetailStyle}"/>
-                            </StackLayout>
+                            <ContentView>
+                                <RelativeLayout>
+                                    <Label
+						                Text="{Binding Nome}"
+						                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" 
+						                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+						                Style="{DynamicResource ListItemTextStyle}"
+						                XAlign="Start"
+						                YAlign="End"
+						                LineBreakMode="TailTruncation"/>
+
+                                    <Label
+                                        Text="{Binding Telefone}"               
+						                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"                     
+						                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" 
+						                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="Small"
+                                        XAlign="Start"
+                                        YAlign="Start"
+                                        LineBreakMode="TailTruncation"/>
+                                </RelativeLayout>
+                            </ContentView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <!--<Button Text="Adicionar" Clicked="{Binding AdicionarCommand}"/>-->
+            <Button Text="Adicionar" Command="{Binding AdicionarCommand}" BackgroundColor="{StaticResource Accent}" TextColor="White"/>
+            <!--<OnPlatform x:TypeArguments="View">
+                <OnPlatform.Android>
+                    <droidViews:AddFloatingButton x:Arguments="{x:Static formsDroid:Forms.Context}" Command="{Binding AdicionarCommand}"/>
+                </OnPlatform.Android>
+            </OnPlatform>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

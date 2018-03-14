@@ -1,4 +1,5 @@
-﻿using VFood.DAO;
+﻿using System.Collections.Generic;
+using VFood.DAO;
 using VFood.Modelo;
 
 namespace VFood.Service
@@ -47,6 +48,11 @@ namespace VFood.Service
         public virtual bool Remove(Model model)
         {
             return _dao.Remove(model);
+        }
+
+        public virtual IList<Model> Listar()
+        {
+            return _dao.Listar();
         }
     }
 }

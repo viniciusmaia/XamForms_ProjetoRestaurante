@@ -19,6 +19,11 @@
         },
         "runtime": {
           "VFood.dll": {}
+        },
+        "resources": {
+          "pt-BR/VFood.resources.dll": {
+            "locale": "pt-BR"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},

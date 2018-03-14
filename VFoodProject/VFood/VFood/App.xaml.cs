@@ -32,6 +32,7 @@ namespace VFood
             containerRegistry.RegisterForNavigation<Entregadores>();
             containerRegistry.RegisterForNavigation<Garcons>();
             containerRegistry.RegisterForNavigation<EntregadorEdit>();
+            containerRegistry.RegisterForNavigation<EntregadorEdit>();
         }
     }
 }

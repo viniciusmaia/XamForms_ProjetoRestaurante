@@ -3,14 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="VFood.Views.EntregadorEdit">
+             x:Class="VFood.Views.EntregadorEdit"
+             Title="{Binding Title}">
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Dados do entregador"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness"  Android="16,16,16,16" iOS="20,0,0,20"/>
+            </StackLayout.Padding>
+            <Entry Placeholder="Nome" Text="{Binding Entregador.Nome}"/>
+            <Entry Placeholder="Telefone" Text="{Binding Entregador.Telefone}"/>
         </StackLayout>
     </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <OnPlatform x:TypeArguments="ToolbarItem">
+            <OnPlatform.iOS>
+                <ToolbarItem Text="Adicionar" Command="{Binding SalvarCommand}"/>
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                <ToolbarItem Icon="ic_check" Command="{Binding SalvarCommand}"/>
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentPage.ToolbarItems>
 
 </ContentPage>
