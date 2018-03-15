@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:formsDroid="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.Platform.Android;targetPlatform=Android"
              xmlns:droidViews="clr-namespace:Xamarin.Forms;assembly=VFood.Droid.CustomViews;targetPlatform=Android"
+             xmlns:customViews="clr-namespace:VFood.CustomViews;assembly=VFood"
              xmlns:converters="clr-namespace:VFood.Converters;assembly=VFood"
              xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -63,7 +64,23 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Adicionar" Command="{Binding AdicionarCommand}" BackgroundColor="{StaticResource Accent}" TextColor="White"/>
+            <OnPlatform x:TypeArguments="View">
+                <OnPlatform.Android>
+                    <customViews:FloatingActionButtonView 
+                        BackgroundTint="{StaticResource Accent}" 
+                        ImageName="ic_add.png" 
+                        Size="Normal"
+                        Command="{Binding AdicionarCommand}"/>
+                </OnPlatform.Android>
+            </OnPlatform>
+            
+            <!--<OnPlatform x:TypeArguments="View">
+                <OnPlatform.Android>
+                    <customViews:FloatingActionButtonView 
+                        ImageName="ic_add" Size="Normal" BackgroundTint="{StaticResource Accent}" Click="{Binding AdicionarCommand}"/>
+                </OnPlatform.Android>
+            </OnPlatform>-->
+            <!--<Button Text="Adicionar" Command="{Binding AdicionarCommand}" BackgroundColor="{StaticResource Accent}" TextColor="White"/>-->
             <!--<OnPlatform x:TypeArguments="View">
                 <OnPlatform.Android>
                     <droidViews:AddFloatingButton x:Arguments="{x:Static formsDroid:Forms.Context}" Command="{Binding AdicionarCommand}"/>
