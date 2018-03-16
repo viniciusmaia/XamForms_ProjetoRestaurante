@@ -30,6 +30,9 @@ namespace VFood.iOS
                    .With(new MaterialModule());
             IconControls.Init();
             ImageCircleRenderer.Init();
+
+            var behaviors = new Prism.Behaviors.BehaviorBase<Xamarin.Forms.ListView>();
+
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

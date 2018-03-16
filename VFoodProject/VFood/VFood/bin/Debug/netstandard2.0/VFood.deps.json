@@ -10,6 +10,7 @@
       "VFood/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.1",
+          "Prism.Forms": "7.0.0.396",
           "Prism.Unity.Forms": "7.0.0.396",
           "Xam.FormsPlugin.Iconize": "1.0.10",
           "Xam.Plugin.Iconize": "1.0.10",
@@ -19,11 +20,6 @@
         },
         "runtime": {
           "VFood.dll": {}
-        },
-        "resources": {
-          "pt-BR/VFood.resources.dll": {
-            "locale": "pt-BR"
-          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},

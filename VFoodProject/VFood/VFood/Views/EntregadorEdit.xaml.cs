@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using VFood.ViewModels;
+using Xamarin.Forms;
 
 namespace VFood.Views
 {
@@ -7,6 +8,14 @@ namespace VFood.Views
         public EntregadorEdit()
         {
             InitializeComponent();
+
+            var viewModel = BindingContext as EntregadorEditViewModel;
+
+            viewModel.EscondeOpcaoRemover = () =>
+            {                  
+                ToolbarItems.Remove(RemoveItem);
+            };
+            
         }
     }
 }

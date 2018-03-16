@@ -6,24 +6,53 @@
              x:Class="VFood.Views.EntregadorEdit"
              Title="{Binding Title}">
 
-    <ContentPage.Content>
-        <StackLayout>
-            <StackLayout.Padding>
-                <OnPlatform x:TypeArguments="Thickness"  Android="16,16,16,16" iOS="20,0,0,20"/>
-            </StackLayout.Padding>
-            <Entry Placeholder="Nome" Text="{Binding Entregador.Nome}"/>
-            <Entry Placeholder="Telefone" Text="{Binding Entregador.Telefone}"/>
-        </StackLayout>
-    </ContentPage.Content>
     <ContentPage.ToolbarItems>
-        <OnPlatform x:TypeArguments="ToolbarItem">
-            <OnPlatform.iOS>
-                <ToolbarItem Text="Adicionar" Command="{Binding SalvarCommand}"/>
+        <ToolbarItem x:Name="RemoveItem" Command="{Binding RemoveCommand}" Order="Primary" Priority="0">
+            <ToolbarItem.Name>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="Trash"/>
+                </OnPlatform>
+            </ToolbarItem.Name>
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="ic_delete"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        
+        <ToolbarItem Command="{Binding SalvarCommand}" Order="Primary" Priority="1">
+            <ToolbarItem.Name>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="Done"/>
+                </OnPlatform>
+            </ToolbarItem.Name>
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="ic_check"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        
+
+        <!--<OnPlatform.iOS>
+                <ToolbarItem x:Name="SalvarItemIOS" Name="Done" Command="{Binding SalvarCommand}" Order="Primary" Priority="0" Text=""/>
+                <ToolbarItem x:Name="RemoveItemIOS" Name="Trash" Command="{Binding RemoveCommand}" Order="Primary" Priority="1" />
             </OnPlatform.iOS>
             <OnPlatform.Android>
-                <ToolbarItem Icon="ic_check" Command="{Binding SalvarCommand}"/>
-            </OnPlatform.Android>
-        </OnPlatform>
+                <ToolbarItem x:Name="SalvarItemDroid" Icon="ic_check" Command="{Binding SalvarCommand}" Order="Primary" Priority="0"/>
+                <ToolbarItem x:Name="RemoveItemDroid" Icon="ic_delete" Command="{Binding RemoveCommand}" Order="Primary"  Priority="1"/>
+            </OnPlatform.Android>-->
+        
     </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Spacing="8">
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness"  Android="16,16,16,16" iOS="10,10,10,10"/>
+            </StackLayout.Padding>
+            <Entry Placeholder="Nome" Text="{Binding Entregador.Nome}"/>
+            <Entry Placeholder="Telefone" Text="{Binding Entregador.Telefone}" Keyboard="Telephone" />
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

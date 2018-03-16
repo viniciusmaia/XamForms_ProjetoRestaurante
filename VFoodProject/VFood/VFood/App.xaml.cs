@@ -3,6 +3,9 @@ using Prism.Ioc;
 using VFood.Views;
 using Xamarin.Forms.Xaml;
 using Prism.Unity;
+using System;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace VFood
@@ -20,19 +23,33 @@ namespace VFood
 
         protected override async void OnInitialized()
         {
-            InitializeComponent();
+            try
+            {
+                TaskScheduler.UnobservedTaskException += (sender, e) =>
+                {
+                    Debug.WriteLine(e.Exception.ToString());
+                };
 
-            await NavigationService.NavigateAsync("Menu/Navigation/Entregadores");
+                InitializeComponent();
+
+                await NavigationService.NavigateAsync("Menu/Navigation/Entregadores");
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                Debug.WriteLine(e.StackTrace);
+            }
+
+           
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterForNavigation<Menu>();            
             containerRegistry.RegisterForNavigation<Navigation>();
-            containerRegistry.RegisterForNavigation<Menu>();
             containerRegistry.RegisterForNavigation<Entregadores>();
             containerRegistry.RegisterForNavigation<Garcons>();
             containerRegistry.RegisterForNavigation<EntregadorEdit>();
-            containerRegistry.RegisterForNavigation<EntregadorEdit>();
-        }
+        }        
     }
 }

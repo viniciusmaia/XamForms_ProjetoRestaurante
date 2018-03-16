@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using System;
 using System.Windows.Input;
 using VFood.Modelo;
 using VFood.Service;
@@ -10,6 +11,8 @@ namespace VFood.ViewModels
     public class EntregadorEditViewModel : ViewModelBase
     {
         private EntregadorService _entregadorService;
+
+        public Action EscondeOpcaoRemover { get; set; }
 
         private Entregador _entregador;
         public Entregador Entregador
@@ -38,6 +41,28 @@ namespace VFood.ViewModels
             }
         }
 
+        private ICommand _removeCommand;
+        public ICommand RemoveCommand
+        {
+            get
+            {
+                if (_removeCommand == null)
+                {
+                    _removeCommand = new DelegateCommand(() =>
+                    {
+                        _entregadorService.Remove(Entregador);
+
+                        var parameters = new NavigationParameters();
+                        parameters.Add("reload", true);
+
+                        NavigationService.GoBackAsync(parameters);
+                    });
+                }
+
+                return _removeCommand;
+            }
+        }
+
         public EntregadorEditViewModel(INavigationService navigationService) : base (navigationService)
         {
             Entregador = new Entregador();
@@ -50,6 +75,10 @@ namespace VFood.ViewModels
             if (parameters != null && parameters.ContainsKey("entregador"))
             {
                 Entregador = parameters["entregador"] as Entregador;
+            }
+            else
+            {
+                EscondeOpcaoRemover();
             }
         }
     }
