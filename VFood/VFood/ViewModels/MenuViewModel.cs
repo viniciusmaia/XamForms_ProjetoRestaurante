@@ -26,8 +26,6 @@ namespace VFood.ViewModels
             }
         }
 
-
-
         private DelegateCommand _garconsCommand;
         public DelegateCommand GarconsCommand
         {
@@ -42,6 +40,23 @@ namespace VFood.ViewModels
                 }
 
                 return _garconsCommand;
+            }
+        }
+
+        private DelegateCommand _tipoItensCardapioCommand;
+        public DelegateCommand TipoItensCardapioCommand
+        {
+            get
+            {
+                if (_tipoItensCardapioCommand == null)
+                {
+                    _tipoItensCardapioCommand = new DelegateCommand(() =>
+                    {
+                        NavigationService.NavigateAsync("Menu/Navigation/TipoItensCardapio");
+                    });
+                }
+
+                return _tipoItensCardapioCommand;
             }
         }
 

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customViews="clr-namespace:VFood.CustomViews;assembly=VFood"
+             xmlns:converters="clr-namespace:VFood.Converters;assembly=VFood"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="VFood.Views.TipoItensCardapio">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToolbarItemAdicionar" Name="Add" Command="{Binding AdicionarCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ActivityIndicator 
+                IsRunning="{Binding IsCarregando}" 
+                IsVisible="{Binding IsCarregando}" 
+                AbsoluteLayout.LayoutBounds="0.5,0.5,0.15, 0.15"
+                AbsoluteLayout.LayoutFlags="All"/>
+            <ListView ItemsSource="{Binding ListaTipoItensCardapio}" 
+                      RowHeight="60" 
+                      AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.9" 
+                      AbsoluteLayout.LayoutFlags="All">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior 
+                        EventName="ItemTapped" 
+                        Command="{Binding TipoItemSelectCommand}" 
+                        EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView>
+                                <RelativeLayout>
+
+                                    <Image x:Name="ItemFoto"
+                                           Source="{Binding Foto}"
+                                           WidthRequest="50"
+                                           HeightRequest="50"
+                                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant=0}"
+                                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=5}"/>
+
+                                    <Label
+						                Text="{Binding Nome}"
+						                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ItemFoto, Property=X, Constant=10}" 
+						                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ItemFoto, Property=Y}" 
+						                Style="{DynamicResource ListItemTextStyle}"/>
+                                </RelativeLayout>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ContentView                 
+                AbsoluteLayout.LayoutBounds="1, 1, 100, 100"                
+                AbsoluteLayout.LayoutFlags="XProportional,YProportional">
+                <OnPlatform x:TypeArguments="View">
+                    <OnPlatform.Android>
+                        <customViews:FloatingActionButtonView
+                            Elevation="12"
+                            BackgroundTint="{StaticResource Accent}" 
+                            ImageName="ic_add.png" 
+                            Size="Normal"
+                            Command="{Binding AdicionarCommand}"/>
+                    </OnPlatform.Android>
+                </OnPlatform>
+            </ContentView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

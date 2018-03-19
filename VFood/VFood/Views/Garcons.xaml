@@ -1,26 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customViews="clr-namespace:VFood.CustomViews;assembly=VFood"
+             xmlns:converters="clr-namespace:VFood.Converters;assembly=VFood"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="VFood.Views.Garcons">
-    
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Garçons"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
-        <OnPlatform x:TypeArguments="ToolbarItem">
-            <OnPlatform.iOS>
-                <ToolbarItem Text="Adicionar"/>
-            </OnPlatform.iOS>
-            <OnPlatform.Android>
-                <ToolbarItem Text=""/>
-            </OnPlatform.Android>
-        </OnPlatform>
+        <ToolbarItem x:Name="ToolbarItemAdicionar" Name="Add" Command="{Binding AdicionarCommand}"/>
     </ContentPage.ToolbarItems>
-  
+    <ContentPage.Content>
+        <!--<AbsoluteLayout>
+            <ListView ItemsSource="{Binding ListaGarcons}"
+                      RowHeight="60"
+                      AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.9" 
+                      AbsoluteLayout.LayoutFlags="All">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior 
+                        EventName="ItemTapped" 
+                        Command="{Binding EntregadorSelectCommand}" 
+                        EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView>
+                                <RelativeLayout>
+                                    <Image s
+                                </RelativeLayout>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </AbsoluteLayout>-->
+    </ContentPage.Content>
+
 </ContentPage>
