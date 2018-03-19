@@ -89,7 +89,8 @@
     <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.396" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomViews\FloatingActionButtonViewRenderer.cs" />
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />
+    <Compile Include="Renderers\FloatingActionButtonViewRenderer.cs" />
     <Compile Include="DAO\ControleArquivoDBDroid.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

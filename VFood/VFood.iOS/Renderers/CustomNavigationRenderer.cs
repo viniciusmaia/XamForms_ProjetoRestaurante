@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UIKit;
-using VFood.iOS.Renderer;
+using VFood.iOS.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(NavigationPage), typeof(CustomNavigationRenderer))]
-namespace VFood.iOS.Renderer
+namespace VFood.iOS.Renderers
 {
     public class CustomNavigationRenderer : NavigationRenderer
     {

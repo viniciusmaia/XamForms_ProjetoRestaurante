@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using VFood.Modelo;
@@ -74,6 +75,22 @@ namespace VFood.ViewModels
 
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
+           /* if (parameters != null && parameters.ContainsKey("reload"))
+            {
+                ListaEntregadores = null;
+                IsCarregando = true;
+
+                await Task.Run(() =>
+                {
+                    ListaEntregadores = new ObservableCollection<Entregador>(_entregadorService.Listar());
+                });
+
+                IsCarregando = false;
+            }    */        
+        }
+
+        public override async void OnNavigatingTo(NavigationParameters parameters)
+        {
             if (parameters != null && parameters.ContainsKey("reload"))
             {
                 ListaEntregadores = null;
@@ -85,7 +102,7 @@ namespace VFood.ViewModels
                 });
 
                 IsCarregando = false;
-            }            
+            }
         }
     }
 }

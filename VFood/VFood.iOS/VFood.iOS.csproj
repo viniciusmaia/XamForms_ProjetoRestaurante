@@ -93,7 +93,10 @@
     <Compile Include="DAO\ControleArquivoDBiOS.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Renderer\CustomNavigationRenderer.cs" />
+    <Compile Include="Renderers\CustomAllViewCellRendereriOS.cs" />
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />
+    <Compile Include="Renderers\CustomNavigationRenderer.cs" />
+    <Compile Include="Renderers\NoEmptyRowsTableViewRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
       <SubType>Designer</SubType>

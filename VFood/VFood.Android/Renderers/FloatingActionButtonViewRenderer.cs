@@ -6,12 +6,12 @@ using Android.Widget;
 using System;
 using System.IO;
 using VFood.CustomViews;
-using VFood.Droid.CustomViews;
+using VFood.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(FloatingActionButtonView), typeof(FloatingActionButtonViewRenderer))]
-namespace VFood.Droid.CustomViews
+namespace VFood.Droid.Renderers
 {
     public class FloatingActionButtonViewRenderer : ViewRenderer<FloatingActionButtonView, FrameLayout>
     {

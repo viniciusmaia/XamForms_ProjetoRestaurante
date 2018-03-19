@@ -8,6 +8,7 @@
             <Color x:Key="Accent">#FF4081</Color>
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="PrimaryDark">#1976D2</Color>
+            <Color x:Key="VermelhoErro">#d81106</Color>
         </ResourceDictionary>
 	</Application.Resources>
 </prism:PrismApplication>

@@ -15,6 +15,11 @@ namespace VFood.Views
             {                  
                 ToolbarItems.Remove(RemoveItem);
             };
+
+            viewModel.DisplayAlert = (titulo, mensagem, textoBotao) =>
+            {
+                DisplayAlert(titulo, mensagem, textoBotao);
+            };
             
         }
     }
