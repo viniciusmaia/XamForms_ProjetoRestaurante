@@ -39,7 +39,7 @@
             <StackLayout.Padding>
                 <OnPlatform x:TypeArguments="Thickness"  Android="16,16,16,16" iOS="10,10,10,10"/>
             </StackLayout.Padding>
-            <customViews:CustomEntry Placeholder="Nome" Text="{Binding Entregador.Nome}"/>
+            <Entry Placeholder="Nome" Text="{Binding Entregador.Nome}"/>
             <Label Text="*Campo obrigatório." FontSize="Small" IsVisible="{Binding IsNomeObrigatorioVisivel}" TextColor="{StaticResource VermelhoErro}"/>
             <customViews:CustomEntry Placeholder="Telefone" Text="{Binding Entregador.Telefone}" Keyboard="Telephone" MaxLength="9" />
             <Label Text="*Campo obrigatório." FontSize="Small" IsVisible="{Binding IsTelefoneObrigatorioVisivel}" TextColor="{StaticResource VermelhoErro}"/>

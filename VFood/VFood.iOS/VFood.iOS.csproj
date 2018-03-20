@@ -148,6 +148,9 @@
     <PackageReference Include="Xam.Plugin.Iconize.Material">
       <Version>1.0.10</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>3.1.3</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>2.0.2</Version>
     </PackageReference>
@@ -165,6 +168,9 @@
       <Project>{e879b9de-5c57-44f5-a0c9-00e4ac7fda5a}</Project>
       <Name>VFood</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_image_default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

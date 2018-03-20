@@ -23,24 +23,9 @@ namespace VFood
 
         protected override async void OnInitialized()
         {
-            try
-            {
-                TaskScheduler.UnobservedTaskException += (sender, e) =>
-                {
-                    Debug.WriteLine(e.Exception.ToString());
-                };
+            InitializeComponent();
 
-                InitializeComponent();
-
-                await NavigationService.NavigateAsync("Menu/Navigation/Entregadores");
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                Debug.WriteLine(e.StackTrace);
-            }
-
-           
+            await NavigationService.NavigateAsync("Menu/Navigation/TipoItensCardapio");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -51,6 +36,7 @@ namespace VFood
             containerRegistry.RegisterForNavigation<Garcons>();
             containerRegistry.RegisterForNavigation<EntregadorEdit>();
             containerRegistry.RegisterForNavigation<TipoItensCardapio>();
+            containerRegistry.RegisterForNavigation<TipoItemCardapioEdit>();
         }        
     }
 }

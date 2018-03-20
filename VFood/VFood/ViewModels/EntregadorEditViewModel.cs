@@ -74,7 +74,6 @@ namespace VFood.ViewModels
 
         public EntregadorEditViewModel(INavigationService navigationService) : base (navigationService)
         {
-            Entregador = new Entregador();
             _entregadorService = new EntregadorService();
             Title = "Entregador";
 
@@ -90,6 +89,7 @@ namespace VFood.ViewModels
             else
             {
                 EscondeOpcaoRemover();
+                Entregador = new Entregador();
             }
         }
 

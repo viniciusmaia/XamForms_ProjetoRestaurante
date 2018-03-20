@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using VFood.ViewModels;
+using Xamarin.Forms;
 
 namespace VFood.Views
 {
@@ -8,9 +9,15 @@ namespace VFood.Views
         {
             InitializeComponent();
 
-            if (Device.RuntimePlatform == Device.Android)
+            if (Device.RuntimePlatform == Device.iOS)
             {
-                ToolbarItems.Remove(ToolbarItemAdicionar);
+                var viewModel = BindingContext as TipoItensCardapioViewModel;
+
+                var adicionarToolbarItem = new ToolbarItem();
+                adicionarToolbarItem.Text = "Add";
+                adicionarToolbarItem.Command = viewModel.AdicionarCommand;
+
+                ToolbarItems.Add(adicionarToolbarItem);
             }
         }
     }

@@ -13,9 +13,9 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem x:Name="ToolbarItemAdicionar" Name="Add" Command="{Binding AdicionarCommand}"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <AbsoluteLayout>
             <ActivityIndicator 
@@ -23,14 +23,14 @@
                 IsVisible="{Binding IsCarregando}" 
                 AbsoluteLayout.LayoutBounds="0.5,0.5,0.15, 0.15"
                 AbsoluteLayout.LayoutFlags="All"/>
-            <ListView ItemsSource="{Binding ListaTipoItensCardapio}" 
+            <ListView ItemsSource="{Binding ListaItensCardapio}" 
                       RowHeight="60" 
                       AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.9" 
                       AbsoluteLayout.LayoutFlags="All">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior 
                         EventName="ItemTapped" 
-                        Command="{Binding TipoItemSelectCommand}" 
+                        Command="{Binding TipoItemCardapioSelectCommand}" 
                         EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"/>
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>

@@ -9,6 +9,8 @@
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="PrimaryDark">#1976D2</Color>
             <Color x:Key="VermelhoErro">#d81106</Color>
+
+            <Thickness x:Key="margemVertical" Left="0"  Top="8" Right="0" Bottom="0" />
         </ResourceDictionary>
 	</Application.Resources>
 </prism:PrismApplication>

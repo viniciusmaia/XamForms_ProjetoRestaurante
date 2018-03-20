@@ -73,22 +73,6 @@ namespace VFood.ViewModels
             Title = "Entregadores";
         }
 
-        public override async void OnNavigatedTo(NavigationParameters parameters)
-        {
-           /* if (parameters != null && parameters.ContainsKey("reload"))
-            {
-                ListaEntregadores = null;
-                IsCarregando = true;
-
-                await Task.Run(() =>
-                {
-                    ListaEntregadores = new ObservableCollection<Entregador>(_entregadorService.Listar());
-                });
-
-                IsCarregando = false;
-            }    */        
-        }
-
         public override async void OnNavigatingTo(NavigationParameters parameters)
         {
             if (parameters != null && parameters.ContainsKey("reload"))

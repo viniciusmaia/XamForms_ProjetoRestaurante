@@ -6,6 +6,7 @@ using FormsPlugin.Iconize.Droid;
 using ImageCircle.Forms.Plugin.Droid;
 using Plugin.Iconize;
 using Plugin.Iconize.Fonts;
+using Plugin.Permissions;
 using Prism;
 using Prism.Ioc;
 
@@ -30,6 +31,11 @@ namespace VFood.Droid
             ImageCircleRenderer.Init();
 
             LoadApplication(new App(new AndroidInitializer()));
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
