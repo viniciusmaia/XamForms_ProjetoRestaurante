@@ -66,6 +66,24 @@ namespace VFood.ViewModels
             }
         }
 
+        private DelegateCommand<Entregador> _removeCommand;
+        public DelegateCommand<Entregador> RemoveCommand
+        {
+            get
+            {
+                if (_removeCommand == null)
+                {
+                    _removeCommand = new DelegateCommand<Entregador>((entregador) =>
+                    {
+                        _entregadorService.Remove(entregador);
+                        ListaEntregadores.Remove(entregador);
+                    });
+                }
+
+                return _removeCommand;
+            }
+        }
+
         public EntregadoresViewModel(INavigationService navigationService) : base(navigationService)
         {
             _entregadorService = new EntregadorService();

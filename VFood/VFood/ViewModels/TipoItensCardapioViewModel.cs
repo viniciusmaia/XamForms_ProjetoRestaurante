@@ -79,6 +79,24 @@ namespace VFood.ViewModels
             }
         }
 
+        private DelegateCommand<TipoItemCardapio> _removeCommand;
+        public DelegateCommand<TipoItemCardapio> RemoveCommand
+        {
+            get
+            {
+                if (_removeCommand == null)
+                {
+                    _removeCommand = new DelegateCommand<TipoItemCardapio>((itemCardapio) =>
+                    {
+                        _service.Remove(itemCardapio);
+                        ListaItensCardapio.Remove(itemCardapio);
+                    });
+                }
+
+                return _removeCommand;
+            }
+        }
+
         public TipoItensCardapioViewModel(INavigationService navigationService) : base(navigationService)
         {
             _service = new TipoItemCardapioService();

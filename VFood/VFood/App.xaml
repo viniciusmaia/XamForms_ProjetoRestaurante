@@ -5,9 +5,9 @@
              x:Class="VFood.App">
 	<Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Accent">#FF4081</Color>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="PrimaryDark">#1976D2</Color>
+            <Color x:Key="Accent">#bc2026</Color>
+            <Color x:Key="Primary">#bc2026</Color>
+            <Color x:Key="PrimaryDark">#840000</Color>
             <Color x:Key="VermelhoErro">#d81106</Color>
 
             <Thickness x:Key="margemVertical" Left="0"  Top="8" Right="0" Bottom="0" />
