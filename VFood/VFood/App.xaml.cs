@@ -3,9 +3,6 @@ using Prism.Ioc;
 using VFood.Views;
 using Xamarin.Forms.Xaml;
 using Prism.Unity;
-using System;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace VFood
@@ -25,7 +22,7 @@ namespace VFood
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("Menu/Navigation/Entregadores");
+            await NavigationService.NavigateAsync("Menu/Navigation/TipoItensCardapio");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

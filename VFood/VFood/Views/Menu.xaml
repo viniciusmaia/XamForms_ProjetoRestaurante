@@ -22,9 +22,9 @@
                     </StackLayout>
                 </Grid>
                 <StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
-                    <views:MenuItem Text="Entregadores" Icon="fa-motorcycle" Command="{Binding EntregadoresCommand}" />
-                    <ContentView HeightRequest="1" BackgroundColor="Gray" />
                     <views:MenuItem Text="Cardápio" Icon="md-restaurant-menu" Command="{Binding TipoItensCardapioCommand}" />
+                    <ContentView HeightRequest="1" BackgroundColor="Gray" />
+                    <views:MenuItem Text="Entregadores" Icon="fa-motorcycle" Command="{Binding EntregadoresCommand}" />
                 </StackLayout>
             </Grid>
         </ContentPage>

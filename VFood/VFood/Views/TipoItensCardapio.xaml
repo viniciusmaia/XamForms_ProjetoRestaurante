@@ -40,6 +40,7 @@
                         <ViewCell Height="56">
                             <ViewCell.ContextActions>
                                 <MenuItem Icon="ic_delete.png" 
+                                          Text="Deletar"
                                           Command="{Binding Path=BindingContext.RemoveCommand, Source={x:Reference Name=ListViewItensCardapio}}" 
                                           CommandParameter="{Binding ., Converter=ItemToObject}"/>
                             </ViewCell.ContextActions>
