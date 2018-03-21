@@ -25,7 +25,7 @@ namespace VFood
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("Menu/Navigation/TipoItensCardapio");
+            await NavigationService.NavigateAsync("Menu/Navigation/Entregadores");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

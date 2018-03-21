@@ -27,6 +27,8 @@ namespace VFood.iOS
         {
             UINavigationBar.Appearance.BarTintColor = UIColor.FromRGBA(188, 32, 38, 1);
             UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes { TextColor = UIColor.White });
+            UINavigationBar.Appearance.TintColor = UIColor.White;
+            UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
 
             global::Xamarin.Forms.Forms.Init();
             Iconize.With(new FontAwesomeModule())

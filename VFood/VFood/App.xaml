@@ -11,6 +11,7 @@
             <Color x:Key="VermelhoErro">#d81106</Color>
 
             <Thickness x:Key="margemVertical" Left="0"  Top="8" Right="0" Bottom="0" />
+            <Thickness x:Key="listItem_iOS_margemEsquerda" Left="8" Top="0" Right="0" Bottom="0"/>
         </ResourceDictionary>
 	</Application.Resources>
 </prism:PrismApplication>

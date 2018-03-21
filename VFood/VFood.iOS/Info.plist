@@ -57,5 +57,13 @@
 	<string>Resources/Media.xcassets/LaunchImages.launchimage</string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/Media.xcassets/AppIcons.appiconset</string>
+  <key>NSCameraUsageDescription</key>
+  <string>Esse aplicativo precisa acessar a câmera para tirar fotos.</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Esse aplicativo precisa acessar as fotos.</string>
+  <key>NSPhotoLibraryAddUsageDescription</key>
+  <string>Esse aplicativo precisa acessar a galeria de fotos.</string>
+  <key>CFBundleName</key>
+  <string>VFood</string>
 </dict>
 </plist>

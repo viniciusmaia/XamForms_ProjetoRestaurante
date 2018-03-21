@@ -46,14 +46,20 @@
                             </ViewCell.ContextActions>
                             <ContentView>
                                 <RelativeLayout>
-                                    <Label
+                                    <Label                                        
 						                Text="{Binding Nome}"
 						                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" 
 						                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
 						                Style="{DynamicResource ListItemTextStyle}"
 						                XAlign="Start"
 						                YAlign="End"
-						                LineBreakMode="TailTruncation"/>
+						                LineBreakMode="TailTruncation">
+                                        <Label.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness">
+                                                <On Platform="iOS" Value="15, 0, 0, 0"/>
+                                            </OnPlatform>
+                                        </Label.Margin>
+                                    </Label>
 
                                     <Label
                                         Text="{Binding Telefone}"               
@@ -64,7 +70,13 @@
                                         FontSize="Small"
                                         XAlign="Start"
                                         YAlign="Start"
-                                        LineBreakMode="TailTruncation"/>
+                                        LineBreakMode="TailTruncation">
+                                        <Label.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness">
+                                                <On Platform="iOS" Value="18, 0, 0, 0"/>
+                                            </OnPlatform>
+                                        </Label.Margin>
+                                    </Label>
                                 </RelativeLayout>
                             </ContentView>
                         </ViewCell>

@@ -39,12 +39,17 @@
                     <DataTemplate>
                         <ViewCell Height="56">
                             <ViewCell.ContextActions>
-                                <MenuItem Icon="ic_delete" 
+                                <MenuItem Icon="ic_delete.png" 
                                           Command="{Binding Path=BindingContext.RemoveCommand, Source={x:Reference Name=ListViewItensCardapio}}" 
                                           CommandParameter="{Binding ., Converter=ItemToObject}"/>
                             </ViewCell.ContextActions>
                             <ContentView>
                                 <RelativeLayout>
+                                    <RelativeLayout.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS" Value="{StaticResource listItem_iOS_margemEsquerda}"/>
+                                        </OnPlatform>
+                                    </RelativeLayout.Margin>
                                     <imgPlugin:CircleImage x:Name="ItemFoto"
                                            Source="{Binding Foto, Converter={StaticResource ByteToImage}}"
                                            WidthRequest="50"
