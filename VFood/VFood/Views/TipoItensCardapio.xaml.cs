@@ -1,8 +1,10 @@
 ﻿using VFood.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace VFood.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TipoItensCardapio : ContentPage
     {
         public TipoItensCardapio()

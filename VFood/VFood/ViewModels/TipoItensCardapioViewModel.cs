@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using VFood.Modelo;
 using VFood.Service;
@@ -23,6 +24,13 @@ namespace VFood.ViewModels
         {
             get { return _isCarregando; }
             set { SetProperty(ref _isCarregando, value); }
+        }
+
+        private bool _canNavigate;
+        public bool CanNavigate
+        {
+            get { return _canNavigate; }
+            set { SetProperty(ref _canNavigate, value); }
         }
 
         private ICommand _adicionarCommand;
@@ -49,12 +57,21 @@ namespace VFood.ViewModels
             {
                 if (_tipoItemCardapioSelectCommand == null)
                 {
-                    _tipoItemCardapioSelectCommand = new DelegateCommand<TipoItemCardapio>((itemCardapio) =>
+                    _tipoItemCardapioSelectCommand = new DelegateCommand<TipoItemCardapio>(async (itemCardapio) =>
                     {
-                        var navigationParemeter = new NavigationParameters();
-                        navigationParemeter.Add("itemCardapio", itemCardapio);
+                        if (CanNavigate)
+                        {
+                            //Previnindo seleção de dois itens "simultaneamente".
+                            CanNavigate = false;
 
-                        NavigationService.NavigateAsync("TipoItemCardapioEdit", navigationParemeter);
+                            var navigationParemeter = new NavigationParameters();
+                            navigationParemeter.Add("itemCardapio", itemCardapio);
+
+                            await NavigationService.NavigateAsync("TipoItemCardapioEdit", navigationParemeter);
+
+                            CanNavigate = true;
+                        }
+                        
                     });
                 }
 
@@ -67,8 +84,24 @@ namespace VFood.ViewModels
             _service = new TipoItemCardapioService();
             ListaItensCardapio = new ObservableCollection<TipoItemCardapio>(_service.Listar());
             Title = "Cardápio";
+            CanNavigate = true;
+        }
+
+        public async override void OnNavigatingTo(NavigationParameters parameters)
+        {
+            if (parameters != null && parameters.ContainsKey("reload"))
+            {
+                IsCarregando = true;
+
+                await Task.Run(() =>
+                {
+                    ListaItensCardapio = new ObservableCollection<TipoItemCardapio>(_service.Listar());
+                });
+
+                IsCarregando = false;
+            }
         }
 
 
-	}
+    }
 }

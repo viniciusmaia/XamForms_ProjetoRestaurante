@@ -1,10 +1,10 @@
-﻿using System;
-using System.Diagnostics;
-using VFood.ViewModels;
+﻿using VFood.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace VFood.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TipoItemCardapioEdit : ContentPage
     {
         public TipoItemCardapioEdit()

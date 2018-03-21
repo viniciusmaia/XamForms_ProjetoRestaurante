@@ -94,6 +94,7 @@ namespace VFood.ViewModels
         {
             _service = new TipoItemCardapioService();
             IsNomeObrigatorioVisivel = false;
+            Title = "Item do Cardápio";
         }
 
         public override void OnNavigatingTo(NavigationParameters parameters)

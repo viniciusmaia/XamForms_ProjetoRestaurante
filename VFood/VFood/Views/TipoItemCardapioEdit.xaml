@@ -4,7 +4,8 @@
              xmlns:converters="clr-namespace:VFood.Converters;assembly=VFood"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="VFood.Views.TipoItemCardapioEdit">
+             x:Class="VFood.Views.TipoItemCardapioEdit"
+             Title="{Binding Title}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -32,7 +33,7 @@
             <StackLayout.Padding>
                 <OnPlatform x:TypeArguments="Thickness"  Android="16,16,16,16" iOS="10,10,10,10"/>
             </StackLayout.Padding>
-            <Entry Placeholder="Nome" Text="{Binding TipoItemCardapio.Nome}"/>
+            <Entry Placeholder="Nome" Text="{Binding TipoItemCardapio.Nome}" />
             <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" IsVisible="{Binding IsNomeObrigatorioVisivel}"/>
             <Label Text="Foto do Item" Margin="6, 8, 0, 0" FontSize="Medium"/>
             <Image Source="{Binding TipoItemCardapio.Foto, Converter={StaticResource ByteToImage}}" 
