@@ -1,12 +1,12 @@
 ﻿using Android.App;
 using Android.Content;
 using Plugin.CurrentActivity;
-using VFood.Droid.Util;
-using VFood.Util;
+using VFood.Droid.Util.Dialogs;
+using VFood.Util.Dialogs;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(DialogCarregamentoDroid))]
-namespace VFood.Droid.Util
+namespace VFood.Droid.Util.Dialogs
 {
     public class DialogCarregamentoDroid : IDialogCarregamento
     {

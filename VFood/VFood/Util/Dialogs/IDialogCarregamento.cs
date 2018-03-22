@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VFood.Util
+namespace VFood.Util.Dialogs
 {
     public interface IDialogCarregamento
     {

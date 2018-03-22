@@ -99,10 +99,10 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Util\Dialogs\BaseDialogDroid.cs" />
     <Compile Include="Util\DialogCarregamentoDroid.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_add.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_check.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_delete.png" />
@@ -110,11 +110,9 @@
     <AndroidResource Include="Resources\drawable-mdpi\ic_check.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_delete.png" />
     <AndroidResource Include="Resources\drawable-v21\ic_check.xml" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_add.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_check.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_delete.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_add.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_check.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_delete.png" />
@@ -137,6 +135,10 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InteractiveAlert.Droid\InteractiveAlert.Droid.csproj">
+      <Project>{7c40a7e0-6338-4ac0-9139-2001a09e08a1}</Project>
+      <Name>InteractiveAlert.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VFood\VFood.csproj">
       <Project>{e879b9de-5c57-44f5-a0c9-00e4ac7fda5a}</Project>
       <Name>VFood</Name>
