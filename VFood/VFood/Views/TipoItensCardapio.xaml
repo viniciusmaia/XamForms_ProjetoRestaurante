@@ -53,6 +53,7 @@
                                     </RelativeLayout.Margin>
                                     <imgPlugin:CircleImage x:Name="ItemFoto"
                                            Source="{Binding Foto, Converter={StaticResource ByteToImage}}"
+                                           Aspect="AspectFill"
                                            WidthRequest="50"
                                            HeightRequest="50"
                                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant=0}"
