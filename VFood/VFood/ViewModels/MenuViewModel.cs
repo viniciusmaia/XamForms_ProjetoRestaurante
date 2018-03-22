@@ -60,6 +60,23 @@ namespace VFood.ViewModels
             }
         }
 
+        private DelegateCommand _configuracaoCommand;
+        public DelegateCommand ConfiguracaoCommand
+        {
+            get
+            {
+                if (_configuracaoCommand == null)
+                {
+                    _configuracaoCommand = new DelegateCommand(() =>
+                    {
+                        NavigationService.NavigateAsync("Menu/Navigation/Configuracao");
+                    });
+                }
+
+                return _configuracaoCommand;
+            }
+        }
+
         public MenuViewModel(INavigationService navigationService)
             : base(navigationService)
         {

@@ -25,6 +25,8 @@
                     <views:MenuItem Text="Cardápio" Icon="md-restaurant-menu" Command="{Binding TipoItensCardapioCommand}" />
                     <ContentView HeightRequest="1" BackgroundColor="Gray" />
                     <views:MenuItem Text="Entregadores" Icon="fa-motorcycle" Command="{Binding EntregadoresCommand}" />
+                    <ContentView HeightRequest="1" BackgroundColor="Gray" />
+                    <views:MenuItem Text="Configuração" Icon="md-settings" Command="{Binding ConfiguracaoCommand}" />
                 </StackLayout>
             </Grid>
         </ContentPage>
