@@ -2,4 +2,5 @@
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">VFood.Droid</string>
+  <string name="mapsApi">AIzaSyBlziAOerWA2pyWVPLG6SQ6tj4opG-5NoI</string>
 </resources>
