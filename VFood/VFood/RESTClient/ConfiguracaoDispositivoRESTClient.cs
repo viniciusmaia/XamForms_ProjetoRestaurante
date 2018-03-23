@@ -23,8 +23,7 @@ namespace VFood.RESTClient
         public async Task<long?> GetDispositivoIdAsync(string eMail)
         {
             long? id = null;
-            // Testei em uma rede esta URL e por problema com a configuração troquei o domínio para o IP e funcionou.Observe também o HTTPS
-            var uri = new Uri(string.Format("http://vfood.azurewebsites.net//dispositivos/configuracao?email={0}", eMail));
+            var uri = new Uri(string.Format("http://vfood.azurewebsites.net/dispositivos/configuracao?email={0}", eMail));
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
             {

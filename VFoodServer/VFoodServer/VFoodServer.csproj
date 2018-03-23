@@ -189,6 +189,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAO\ConfiguracaoDispositivoDAO.cs" />
     <Compile Include="DAO\GarcomDAO.cs" />
+    <Compile Include="DAO\Migrations\Configuration.cs" />
     <Compile Include="DAO\VFoodContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

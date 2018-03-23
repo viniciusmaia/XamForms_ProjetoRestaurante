@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <color name="colorPrimary">#bc2026</color>
+  <color name="colorPrimary">#bc1f26</color>
   <color name="colorPrimaryDark">#840000</color>
-  <color name="colorAccent">#bc2026</color>
+  <color name="colorAccent">#bc1f26</color>
   <color name="actionMode">#F44336</color>
+  <color name="controlHighlight">#f5584f</color>
 </resources>

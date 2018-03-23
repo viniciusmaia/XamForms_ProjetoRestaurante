@@ -101,6 +101,8 @@
     <Compile Include="Renderers\CustomNavigationRenderer.cs" />
     <Compile Include="Renderers\NoEmptyRowsTableViewRenderer.cs" />
     <Compile Include="Util\DialogCarregamentoiOS.cs" />
+    <Compile Include="Util\DialogInformacaoiOS.cs" />
+    <Compile Include="Util\IconeImagemPadraoiOS.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
       <SubType>Designer</SubType>

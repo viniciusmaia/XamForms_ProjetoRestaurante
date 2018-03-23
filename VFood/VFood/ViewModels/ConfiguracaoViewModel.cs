@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Windows.Input;
 using VFood.Modelo;
 using VFood.Service;
+using VFood.Util.Dialogs;
+using Xamarin.Forms;
 
 namespace VFood.ViewModels
 {
@@ -14,10 +16,12 @@ namespace VFood.ViewModels
         private ConfiguracaoDispositivoService _service;
 
         private ConfiguracaoDispositivo _configuracao;
-        public ConfiguracaoDispositivo Configuracao
+
+        private string _email;
+        public string Email
         {
-            get { return _configuracao; }
-            set { SetProperty(ref _configuracao, value); }
+            get { return _email; }
+            set { SetProperty(ref _email, value); }
         }
 
         private string _idDispositivo;
@@ -34,10 +38,7 @@ namespace VFood.ViewModels
             {
                 if (_obterIdCommand == null)
                 {
-                    _obterIdCommand = new DelegateCommand(() =>
-                    {
-
-                    });
+                    _obterIdCommand = new DelegateCommand(ExecuteObterIdCommand);
                 }
 
                 return _obterIdCommand;
@@ -47,31 +48,62 @@ namespace VFood.ViewModels
         public ConfiguracaoViewModel(INavigationService navigationService) : base(navigationService)
         {
             _service = new ConfiguracaoDispositivoService();
+            Title = "Configuração";
+        }
+
+        private async void ExecuteObterIdCommand()
+        {
+            if (Email != null)
+            {
+                var dialogCarregamento = DependencyService.Get<IDialogCarregamento>();
+
+                try
+                {
+                    dialogCarregamento.Inicia("Aguarde", "Gerando Id do dispositivo", false);
+
+                    _configuracao = await _service.ObtemIdDispositivo(Email);
+
+
+                    IdDispositivo = _configuracao.IdLocal.ToString();
+                    Email = _configuracao.Email;
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                    Debug.WriteLine(e.StackTrace);
+
+                    var dialogInformacao = DependencyService.Get<IDialogInformacao>();
+                    dialogInformacao.Abre("Erro", e.Message);
+                }
+                finally
+                {
+                    dialogCarregamento.Finaliza();
+                }
+
+
+            }
+            else
+            {
+                var dialogInformacao = DependencyService.Get<IDialogInformacao>();
+                dialogInformacao.Abre("Atenção!", "Preencha o campo \"E-mail\"");
+            }
+
+            
         }
 
         public override void OnNavigatingTo(NavigationParameters parameters)
         {
-            try
+            _configuracao = _service.GetConfiguracao();
+
+            if (_configuracao != null)
             {
-                Configuracao = _service.GetConfiguracao();
-
-                if (Configuracao != null)
-                {
-                    IdDispositivo = Configuracao.Id.ToString();
-                }
-                else
-                {
-                    IdDispositivo = "Sem Id";
-                }
+                IdDispositivo = _configuracao.IdLocal.ToString();
+                Email = _configuracao.Email;
             }
-            catch (Exception e)
+            else
             {
-                Debug.WriteLine(e.Message);
-                Debug.WriteLine(e.StackTrace);
-
-                throw e;
+                IdDispositivo = "Indefinido";
             }
-
             
         }
     }

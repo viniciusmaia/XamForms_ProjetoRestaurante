@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="VFood.Views.Configuracao">
+             x:Class="VFood.Views.Configuracao"
+             Title="{Binding Title}">
     <ContentPage.Content>
         <Frame>
             <StackLayout Padding="16">
-                <Entry Placeholder="E-mail" PlaceholderColor="Gray" Text="{Binding Configuracao.Email}"/>
-                <Label Text="{Binding IdDispositivo}" Margin="{StaticResource margemVertical}" />
+                <Entry Placeholder="E-mail" PlaceholderColor="Gray" Text="{Binding Email}"/>
+                <Label Text="Id do dispositivo" FontSize="Medium" Margin="6,8,0,0"/>
+                <Label Text="{Binding IdDispositivo}" FontSize="Medium" Margin="6,0,0,0" />
                 <Button Text="Obter Id para o dispositivo" 
                         TextColor="White"
                         BackgroundColor="{StaticResource Accent}"

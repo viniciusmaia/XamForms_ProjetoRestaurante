@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using VFoodServer.Models.Types;
 
 namespace VFood.Modelo
 {
     public class Garcom : BaseModel
     {
-        public string CodigoDispositivo { get; set; }
+        public long? Id { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public byte[] Foto { get; set; }
@@ -16,7 +17,7 @@ namespace VFood.Modelo
         public override bool Equals(object obj)
         {
             var garcom = obj as Garcom;
-            return Id.Equals(garcom.Id);
+            return IdLocal.Equals(garcom.IdLocal);
         }
 
         public override int GetHashCode()
@@ -24,5 +25,10 @@ namespace VFood.Modelo
             return Convert.ToInt32(DispositivoId + EntityId);
         }
 
+        [JsonIgnore]
+        public string NomeCompleto
+        {
+            get { return Nome + " " + Sobrenome; }
+        }
     }
 }

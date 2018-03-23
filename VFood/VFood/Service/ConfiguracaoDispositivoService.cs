@@ -10,15 +10,12 @@ namespace VFood.Service
     {
         public ConfiguracaoDispositivo GetConfiguracao()
         {
-            var teste = CrossSettings.Current;
-
-
             if (CrossSettings.Current.Contains(Constantes.EmailConfiguracaoKey) && CrossSettings.Current.Contains(Constantes.IdDispositivoConfiguracaoKey))
             {
                 return new ConfiguracaoDispositivo
                 {
                     Email = CrossSettings.Current.GetValueOrDefault(Constantes.EmailConfiguracaoKey, null),
-                    Id = CrossSettings.Current.GetValueOrDefault(Constantes.IdDispositivoConfiguracaoKey, 0)
+                    IdLocal = CrossSettings.Current.GetValueOrDefault(Constantes.IdDispositivoConfiguracaoKey, 0L)
                 };
             }
 
@@ -35,7 +32,7 @@ namespace VFood.Service
             return new ConfiguracaoDispositivo
             {
                 Email = email,
-                Id = idDispositivo
+                IdLocal = idDispositivo
             };             
         }
     }

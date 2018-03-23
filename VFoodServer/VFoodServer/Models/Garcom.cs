@@ -5,7 +5,6 @@ namespace VFoodServer.Models
 {
     public class Garcom : BaseModel
     {
-        public string CodigoDispositivo { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public byte[] Foto { get; set; }

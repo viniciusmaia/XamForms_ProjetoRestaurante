@@ -25,7 +25,7 @@ namespace VFood.Service
 
         public virtual void Salva(Model modelo)
         {
-            if (modelo.Id == null)
+            if (modelo.IdLocal == null)
             {
                 Insere(modelo);
             }

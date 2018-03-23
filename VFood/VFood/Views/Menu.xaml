@@ -26,6 +26,8 @@
                     <ContentView HeightRequest="1" BackgroundColor="Gray" />
                     <views:MenuItem Text="Entregadores" Icon="fa-motorcycle" Command="{Binding EntregadoresCommand}" />
                     <ContentView HeightRequest="1" BackgroundColor="Gray" />
+                    <views:MenuItem Text="Garçons" Icon="md-group" Command="{Binding GarconsCommand}" />
+                    <ContentView HeightRequest="1" BackgroundColor="Gray" />
                     <views:MenuItem Text="Configuração" Icon="md-settings" Command="{Binding ConfiguracaoCommand}" />
                 </StackLayout>
             </Grid>

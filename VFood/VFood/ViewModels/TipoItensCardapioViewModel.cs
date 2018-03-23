@@ -119,7 +119,5 @@ namespace VFood.ViewModels
                 IsCarregando = false;
             }
         }
-
-
     }
 }

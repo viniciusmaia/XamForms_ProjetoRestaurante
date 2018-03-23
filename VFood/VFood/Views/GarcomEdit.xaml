@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:VFood.Converters;assembly=VFood"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="VFood.Views.GarcomEdit"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteToImageConverter x:Key="ByteToImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SalvarCommand}" Order="Primary" Priority="1">
+            <ToolbarItem.Name>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="Done"/>
+                </OnPlatform>
+            </ToolbarItem.Name>
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="ic_check"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness"  Android="16,16,16,16" iOS="10,10,10,10"/>
+            </StackLayout.Padding>
+            <Entry Placeholder="Nome" Text="{Binding Garcom.Nome}" />
+            <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" FontSize="Small" IsVisible="{Binding IsNomeObrigatorioVisivel}"/>
+            <Entry Placeholder="Sobrenome" Text="{Binding Garcom.Sobrenome}" />
+            <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" FontSize="Small" IsVisible="{Binding IsSobrenomeObrigatorioVisivel}"/>
+            <Label Text="Foto do Item" Margin="6, 8, 0, 0" FontSize="Medium"/>
+            <Image Source="{Binding Garcom.Foto, Converter={StaticResource ByteToImage}}" 
+                   WidthRequest="100" 
+                   HeightRequest="100" 
+                   HorizontalOptions="Center"
+                   Margin="0, 4, 0, 0"/>
+            <AbsoluteLayout Margin="{StaticResource margemVertical}">
+                <Button 
+                    Text="Câmera" 
+                    TextColor="White" 
+                    BackgroundColor="{StaticResource Accent}" 
+                    Command="{Binding CameraCommand}"
+                    AbsoluteLayout.LayoutBounds="0,0,0.5,1"
+                    AbsoluteLayout.LayoutFlags="All"/>
+                <Button 
+                    Text="Galeria" 
+                    TextColor="White" 
+                    BackgroundColor="{StaticResource Accent}" 
+                    Command="{Binding GaleriaCommand}"
+                    AbsoluteLayout.LayoutBounds="1,0,0.5,1"
+                    AbsoluteLayout.LayoutFlags="All"/>
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -115,7 +115,7 @@ namespace VFood.DAO
             {
                 using (var connection = new SQLiteConnection(_pathDBFile))
                 {
-                    int quantidadeObjetosRemovidos = connection.Delete<Model>(modelo.Id);
+                    int quantidadeObjetosRemovidos = connection.Delete<Model>(modelo.IdLocal);
 
                     return quantidadeObjetosRemovidos > 0 ? true : false;
                 }

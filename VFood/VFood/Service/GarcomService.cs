@@ -3,7 +3,7 @@ using VFood.Modelo;
 
 namespace VFood.Service
 {
-    public class GarconService : BaseService<Garcom, GarconDAO>
+    public class GarcomService : BaseService<Garcom, GarconDAO>
     {
     }
 }
