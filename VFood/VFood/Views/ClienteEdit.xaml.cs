@@ -3,13 +3,13 @@ using Xamarin.Forms;
 
 namespace VFood.Views
 {
-    public partial class GarcomEdit : ContentPage
+    public partial class ClienteEdit : ContentPage
     {
-        public GarcomEdit()
+        public ClienteEdit()
         {
             InitializeComponent();
 
-            var viewModel = BindingContext as GarcomEditViewModel;
+            var viewModel = BindingContext as ClienteEditViewModel;
 
             viewModel.ExibeOpcaoRemover = () =>
             {

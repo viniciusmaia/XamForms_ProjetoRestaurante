@@ -30,7 +30,7 @@ namespace VFood.iOS
             UINavigationBar.Appearance.TintColor = UIColor.White;
             UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
 
-            global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.Forms.Init();
             Iconize.With(new FontAwesomeModule())
                    .With(new MaterialModule());
             IconControls.Init();

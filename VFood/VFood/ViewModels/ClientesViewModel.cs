@@ -9,15 +9,15 @@ using VFood.Service;
 
 namespace VFood.ViewModels
 {
-	public class GarconsViewModel : ViewModelBase
+	public class ClientesViewModel : ViewModelBase
 	{
-        private GarcomService _service;
+        private ClienteService _service;
 
-        private ObservableCollection<Garcom> _listaGarcons;
-        public ObservableCollection<Garcom> ListaGarcons
+        private ObservableCollection<Cliente> _listaClientes;
+        public ObservableCollection<Cliente> ListaClientes
         {
-            get { return _listaGarcons; }
-            set { SetProperty(ref _listaGarcons, value); }
+            get { return _listaClientes; }
+            set { SetProperty(ref _listaClientes, value); }
         }
 
         private bool _isCarregando;
@@ -43,7 +43,7 @@ namespace VFood.ViewModels
                 {
                     _adicionarCommand = new DelegateCommand(() =>
                     {
-                        NavigationService.NavigateAsync("GarcomEdit");
+                        NavigationService.NavigateAsync("ClienteEdit");
                     });
                 }
 
@@ -51,14 +51,14 @@ namespace VFood.ViewModels
             }
         }
 
-        private DelegateCommand<Garcom> _garcomSelectCommand;
-        public DelegateCommand<Garcom> GarcomSelectCommand
+        private DelegateCommand<Cliente> _clienteSelectCommand;
+        public DelegateCommand<Cliente> ClienteSelectCommand
         {
             get
             {
-                if (_garcomSelectCommand == null)
+                if (_clienteSelectCommand == null)
                 {
-                    _garcomSelectCommand = new DelegateCommand<Garcom>(async (garcom) =>
+                    _clienteSelectCommand = new DelegateCommand<Cliente>(async (cliente) =>
                     {
                         if (CanNavigate)
                         {
@@ -66,9 +66,9 @@ namespace VFood.ViewModels
                             CanNavigate = false;
 
                             var navigationParemeter = new NavigationParameters();
-                            navigationParemeter.Add("garcom", garcom);
+                            navigationParemeter.Add("cliente", cliente);
 
-                            await NavigationService.NavigateAsync("GarcomEdit", navigationParemeter);
+                            await NavigationService.NavigateAsync("ClienteEdit", navigationParemeter);
 
                             CanNavigate = true;
                         }
@@ -76,21 +76,21 @@ namespace VFood.ViewModels
                     });
                 }
 
-                return _garcomSelectCommand;
+                return _clienteSelectCommand;
             }
         }
 
-        private DelegateCommand<Garcom> _removeCommand;
-        public DelegateCommand<Garcom> RemoveCommand
+        private DelegateCommand<Cliente> _removeCommand;
+        public DelegateCommand<Cliente> RemoveCommand
         {
             get
             {
                 if (_removeCommand == null)
                 {
-                    _removeCommand = new DelegateCommand<Garcom>((itemCardapio) =>
+                    _removeCommand = new DelegateCommand<Cliente>((itemCardapio) =>
                     {
                         _service.Remove(itemCardapio);
-                        ListaGarcons.Remove(itemCardapio);
+                        ListaClientes.Remove(itemCardapio);
                     });
                 }
 
@@ -98,11 +98,11 @@ namespace VFood.ViewModels
             }
         }
 
-        public GarconsViewModel(INavigationService navigationService) : base(navigationService)
+        public ClientesViewModel(INavigationService navigationService) : base(navigationService)
         {
-            _service = new GarcomService();
-            ListaGarcons = new ObservableCollection<Garcom>(_service.Listar());
-            Title = "Garçons";
+            _service = new ClienteService();
+            ListaClientes = new ObservableCollection<Cliente>(_service.Listar());
+            Title = "Clientes";
             CanNavigate = true;
         }
 
@@ -114,7 +114,7 @@ namespace VFood.ViewModels
 
                 await Task.Run(() =>
                 {
-                    ListaGarcons = new ObservableCollection<Garcom>(_service.Listar());
+                    ListaClientes = new ObservableCollection<Cliente>(_service.Listar());
                 });
 
                 IsCarregando = false;

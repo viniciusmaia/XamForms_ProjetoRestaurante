@@ -22,6 +22,8 @@ namespace VFood.Droid
 
             base.OnCreate(bundle);
 
+            Window.SetSoftInputMode(Android.Views.SoftInput.AdjustResize);
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             Iconize.With(new FontAwesomeModule())

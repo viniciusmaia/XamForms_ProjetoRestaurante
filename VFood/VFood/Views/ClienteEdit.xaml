@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:VFood.Converters;assembly=VFood"
+             xmlns:customViews="clr-namespace:VFood.CustomViews;assembly=VFood"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="VFood.Views.ClienteEdit"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteToImageConverter x:Key="ByteToImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SalvarCommand}" Order="Primary" Priority="1">
+            <ToolbarItem.Name>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="Done"/>
+                </OnPlatform>
+            </ToolbarItem.Name>
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="ic_check"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness"  Android="16,16,16,16" iOS="10,10,10,10"/>
+                </StackLayout.Padding>
+                <Entry Placeholder="Nome" Text="{Binding Cliente.Nome}" />
+                <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" FontSize="Small" IsVisible="{Binding IsNomeObrigatorioVisivel}"/>
+
+                <customViews:CustomEntry Placeholder="Telefone" Text="{Binding Cliente.Telefone}" Keyboard="Telephone" MaxLength="8" />
+                <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" FontSize="Small" IsVisible="{Binding IsTelefoneObrigatorioVisivel}"/>
+
+                <Entry Placeholder="Endereço" Text="{Binding Cliente.Endereco}" />
+                <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" FontSize="Small" IsVisible="{Binding IsEnderecoObrigatorioVisivel}"/>
+
+                <Entry Placeholder="Número" Text="{Binding Cliente.Numero}" Keyboard="Numeric" />
+                <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" FontSize="Small" IsVisible="{Binding IsNumeroObrigatorioVisivel}"/>
+
+                <Entry Placeholder="Bairro" Text="{Binding Cliente.Bairro}" />
+                <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" FontSize="Small" IsVisible="{Binding IsBairroObrigatorioVisivel}"/>
+
+                <Entry Placeholder="Cidade" Text="{Binding Cliente.Cidade}" />
+                <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" FontSize="Small" IsVisible="{Binding IsCidadeObrigatorioVisivel}"/>
+
+                <Entry Placeholder="Estado" Text="{Binding Cliente.Estado}" />
+                <Label Text="*Campo obrigatório" TextColor="{StaticResource VermelhoErro}" FontSize="Small" IsVisible="{Binding IsEstadoObrigatorioVisivel}"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

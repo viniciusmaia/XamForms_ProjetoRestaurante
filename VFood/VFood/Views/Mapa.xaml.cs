@@ -2,9 +2,9 @@
 
 namespace VFood.Views
 {
-    public partial class Garcons : ContentPage
+    public partial class MapaView : ContentPage
     {
-        public Garcons()
+        public MapaView()
         {
             InitializeComponent();
         }

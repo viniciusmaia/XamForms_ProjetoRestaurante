@@ -7,7 +7,7 @@
              xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="VFood.Views.Garcons"
+             x:Class="VFood.Views.Clientes"
              Title="{Binding Title}">
 
     <ContentPage.Resources>
@@ -25,7 +25,7 @@
                 AbsoluteLayout.LayoutBounds="0.5,0.5,0.15, 0.15"
                 AbsoluteLayout.LayoutFlags="All"/>
             <ListView x:Name="ListViewGarcons"
-                      ItemsSource="{Binding ListaGarcons}" 
+                      ItemsSource="{Binding ListaClientes}" 
                       RowHeight="60" 
                       AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.9" 
                       AbsoluteLayout.LayoutFlags="All"
@@ -47,24 +47,37 @@
                             </ViewCell.ContextActions>
                             <ContentView>
                                 <RelativeLayout>
-                                    <RelativeLayout.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS" Value="{StaticResource listItem_iOS_margemEsquerda}"/>
-                                        </OnPlatform>
-                                    </RelativeLayout.Margin>
-                                    <imgPlugin:CircleImage x:Name="ItemFoto"
-                                           Source="{Binding Foto, Converter={StaticResource ByteToImage}}"
-                                           Aspect="AspectFill"
-                                           WidthRequest="50"
-                                           HeightRequest="50"
-                                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant=0}"
-                                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=5}" />
+                                    <Label                                        
+						                Text="{Binding Nome}"
+						                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" 
+						                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+						                Style="{DynamicResource ListItemTextStyle}"
+						                XAlign="Start"
+						                YAlign="End"
+						                LineBreakMode="TailTruncation">
+                                        <Label.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness">
+                                                <On Platform="iOS" Value="15, 0, 0, 0"/>
+                                            </OnPlatform>
+                                        </Label.Margin>
+                                    </Label>
 
                                     <Label
-						                Text="{Binding NomeCompleto}"
-						                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ItemFoto, Property=X, Constant=72}" 
-						                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ItemFoto, Property=Y, Constant=15}" 
-						                Style="{DynamicResource ListItemTextStyle}"/>
+                                        Text="{Binding Telefone}"               
+						                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"                     
+						                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" 
+						                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="Small"
+                                        XAlign="Start"
+                                        YAlign="Start"
+                                        LineBreakMode="TailTruncation">
+                                        <Label.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness">
+                                                <On Platform="iOS" Value="18, 0, 0, 0"/>
+                                            </OnPlatform>
+                                        </Label.Margin>
+                                    </Label>
                                 </RelativeLayout>
                             </ContentView>
                         </ViewCell>

@@ -2,7 +2,7 @@
 
 namespace VFood.DAO
 {
-    public class GarconDAO : BaseDAO<Garcom>
+    public class ClienteDAO : BaseDAO<Cliente>
     {
     }
 }

@@ -22,7 +22,7 @@ namespace VFood
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("Menu/Navigation/TipoItensCardapio");
+            await NavigationService.NavigateAsync("Menu/Navigation/Clientes");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -30,12 +30,13 @@ namespace VFood
             containerRegistry.RegisterForNavigation<Menu>();            
             containerRegistry.RegisterForNavigation<Navigation>();
             containerRegistry.RegisterForNavigation<Entregadores>();
-            containerRegistry.RegisterForNavigation<Garcons>();
+            containerRegistry.RegisterForNavigation<Clientes>();
             containerRegistry.RegisterForNavigation<EntregadorEdit>();
             containerRegistry.RegisterForNavigation<TipoItensCardapio>();
             containerRegistry.RegisterForNavigation<TipoItemCardapioEdit>();
             containerRegistry.RegisterForNavigation<Configuracao>();
-            containerRegistry.RegisterForNavigation<GarcomEdit>();
+            containerRegistry.RegisterForNavigation<ClienteEdit>();
+            containerRegistry.RegisterForNavigation<MapaView>();
         }        
     }
 }
