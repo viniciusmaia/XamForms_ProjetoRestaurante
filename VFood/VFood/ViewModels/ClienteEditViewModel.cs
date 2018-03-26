@@ -126,7 +126,7 @@ namespace VFood.ViewModels
             }
         }
 
-        private void ExecuteSalvarCommand()
+        private async void ExecuteSalvarCommand()
         {
             OcultaMensagensCamposObrigatorios();
 
@@ -135,18 +135,18 @@ namespace VFood.ViewModels
                 _service.Salva(Cliente);
                 var parameters = new NavigationParameters();
                 parameters.Add("reload", true);
-                NavigationService.GoBackAsync(parameters);
+                await NavigationService.GoBackAsync(parameters);
             }
         }
 
-        private void ExecuteRemoverCommand()
+        private async void ExecuteRemoverCommand()
         {
             _service.Remove(Cliente);
 
             var parameters = new NavigationParameters();
             parameters.Add("reload", true);
 
-            NavigationService.GoBackAsync(parameters);
+            await NavigationService.GoBackAsync(parameters);
         }
 
         private bool CanSalvar()

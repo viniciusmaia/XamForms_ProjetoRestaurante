@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using VFood.ViewModels;
 using Xamarin.Forms;
 
 namespace VFood.Views
@@ -7,16 +8,18 @@ namespace VFood.Views
     {
         public Clientes()
         {
-            try
-            {
-                InitializeComponent();
-            }
-            catch (System.Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                Debug.WriteLine(e.StackTrace);
-            }
+            InitializeComponent();
 
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                var viewModel = BindingContext as ClientesViewModel;
+
+                var adicionarToolbarItem = new ToolbarItem();
+                adicionarToolbarItem.Text = "Add";
+                adicionarToolbarItem.Command = viewModel.AdicionarCommand;
+
+                ToolbarItems.Add(adicionarToolbarItem);
+            }
         }
     }
 }

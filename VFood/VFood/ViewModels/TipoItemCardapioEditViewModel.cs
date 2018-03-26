@@ -135,7 +135,7 @@ namespace VFood.ViewModels
             }
         }
 
-        private void ExecuteSalvarCommand()
+        private async void ExecuteSalvarCommand()
         {
             IsNomeObrigatorioVisivel = false;
 
@@ -144,18 +144,18 @@ namespace VFood.ViewModels
                 _service.Salva(TipoItemCardapio);
                 var parameters = new NavigationParameters();
                 parameters.Add("reload", true);
-                NavigationService.GoBackAsync(parameters);
+                await NavigationService.GoBackAsync(parameters);
             }
         }
 
-        private void ExecuteRemoverCommand()
+        private async void ExecuteRemoverCommand()
         {
             _service.Remove(TipoItemCardapio);
 
             var parameters = new NavigationParameters();
             parameters.Add("reload", true);
 
-            NavigationService.GoBackAsync(parameters);
+            await NavigationService.GoBackAsync(parameters);
         }
 
         private bool CanSalvar()

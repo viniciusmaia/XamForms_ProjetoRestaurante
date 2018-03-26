@@ -9,6 +9,7 @@ using Plugin.Iconize.Fonts;
 using Plugin.Permissions;
 using Prism;
 using Prism.Ioc;
+using Xamarin;
 
 namespace VFood.Droid
 {
@@ -25,6 +26,7 @@ namespace VFood.Droid
             Window.SetSoftInputMode(Android.Views.SoftInput.AdjustResize);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.FormsMaps.Init(this, bundle);
 
             Iconize.With(new FontAwesomeModule())
                    .With(new MaterialModule());
@@ -45,7 +47,6 @@ namespace VFood.Droid
     {
         public void RegisterTypes(IContainerRegistry container)
         {
-            // Register any platform specific implementations
         }
     }
 }

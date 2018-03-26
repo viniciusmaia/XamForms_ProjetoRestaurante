@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:imgPlugin="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              xmlns:customViews="clr-namespace:VFood.CustomViews;assembly=VFood"
              xmlns:converters="clr-namespace:VFood.Converters;assembly=VFood"
              xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="VFood.Views.Clientes"
+             x:Class="VFood.Views.LocalizacaoCliente"
              Title="{Binding Title}">
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ItemTappedEventArgsConverter x:Key="ItemToObject"/>
@@ -39,12 +37,6 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="56">
-                            <ViewCell.ContextActions>
-                                <MenuItem Icon="ic_delete.png" 
-                                          Text="Deletar"
-                                          Command="{Binding Path=BindingContext.RemoveCommand, Source={x:Reference Name=ListViewGarcons}}" 
-                                          CommandParameter="{Binding ., Converter=ItemToObject}"/>
-                            </ViewCell.ContextActions>
                             <ContentView>
                                 <RelativeLayout>
                                     <Label                                        
@@ -84,21 +76,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ContentView                 
-                AbsoluteLayout.LayoutBounds="1, 1, 100, 100"                
-                AbsoluteLayout.LayoutFlags="XProportional,YProportional">
-                <OnPlatform x:TypeArguments="View">
-                    <OnPlatform.Android>
-                        <customViews:FloatingActionButtonView
-                            Elevation="12"
-                            BackgroundTint="{StaticResource Accent}" 
-                            ImageName="ic_add.png" 
-                            Size="Normal"
-                            Command="{Binding AdicionarCommand}"/>
-                    </OnPlatform.Android>
-                </OnPlatform>
-            </ContentView>
         </AbsoluteLayout>
     </ContentPage.Content>
-
+  
 </ContentPage>

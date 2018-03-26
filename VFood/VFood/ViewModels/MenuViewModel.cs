@@ -26,20 +26,37 @@ namespace VFood.ViewModels
             }
         }
 
-        private DelegateCommand _garconsCommand;
-        public DelegateCommand GarconsCommand
+        private DelegateCommand _clientesCommand;
+        public DelegateCommand ClientesCommand
         {
             get
             {
-                if (_garconsCommand == null)
+                if (_clientesCommand == null)
                 {
-                    _garconsCommand = new DelegateCommand(() =>
+                    _clientesCommand = new DelegateCommand(() =>
                     {
-                        NavigationService.NavigateAsync("Menu/Navigation/Garcons");
+                        NavigationService.NavigateAsync("Menu/Navigation/Clientes");
                     });
                 }
 
-                return _garconsCommand;
+                return _clientesCommand;
+            }
+        }
+
+        private DelegateCommand _localizacaoClientesCommand;
+        public DelegateCommand LocalizacaoClientesCommand
+        {
+            get
+            {
+                if (_localizacaoClientesCommand == null)
+                {
+                    _localizacaoClientesCommand = new DelegateCommand(() =>
+                    {
+                        NavigationService.NavigateAsync("Menu/Navigation/LocalizacaoCliente");
+                    });
+                }
+
+                return _localizacaoClientesCommand;
             }
         }
 

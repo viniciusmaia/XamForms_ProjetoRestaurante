@@ -2,6 +2,7 @@
 using System;
 using VFood.iOS.Util;
 using VFood.Util;
+using VFood.Util.Dialogs;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(DialogCarregamentoiOS))]

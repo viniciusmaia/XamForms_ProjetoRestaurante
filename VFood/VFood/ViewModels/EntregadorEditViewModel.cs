@@ -57,14 +57,14 @@ namespace VFood.ViewModels
             {
                 if (_removeCommand == null)
                 {
-                    _removeCommand = new DelegateCommand(() =>
+                    _removeCommand = new DelegateCommand(async () =>
                     {
                         _entregadorService.Remove(Entregador);
 
                         var parameters = new NavigationParameters();
                         parameters.Add("reload", true);
 
-                        NavigationService.GoBackAsync(parameters);
+                        await NavigationService.GoBackAsync(parameters);
                     });
                 }
 
@@ -93,7 +93,7 @@ namespace VFood.ViewModels
             }
         }
 
-        private void ExecuteSalvarCommand()
+        private async void ExecuteSalvarCommand()
         {
             OcultaMensagensCampoObrigatorio();
 
@@ -102,7 +102,7 @@ namespace VFood.ViewModels
                 _entregadorService.Salva(Entregador);
                 var parameters = new NavigationParameters();
                 parameters.Add("reload", true);
-                NavigationService.GoBackAsync(parameters);
+                await NavigationService.GoBackAsync(parameters);
             }
         }
 
