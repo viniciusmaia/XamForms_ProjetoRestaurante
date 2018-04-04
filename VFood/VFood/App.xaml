@@ -10,6 +10,31 @@
             <Color x:Key="PrimaryDark">#840000</Color>
             <Color x:Key="VermelhoErro">#d81106</Color>
 
+            <OnPlatform x:Key="cor_textoSecundario" x:TypeArguments="Color">
+                <On Platform="Android" Value="#757575"/>
+                <On Platform="iOS" Value="#4D4D4D"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="listItem_alturaLinhaUnica" x:TypeArguments="x:Double">
+                <On Platform="Android" Value="48"/>
+                <On Platform="iOS" Value="44"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="fontSize_textoPrimario" x:TypeArguments="x:Double">
+                <On Platform="Android" Value="16"/>
+                <On Platform="iOS" Value="17"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="fontSize_textoSecundario" x:TypeArguments="x:Double">
+                <On Platform="Android" Value="14"/>
+                <On Platform="iOS" Value="15"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="cor_textoPrimario" x:TypeArguments="Color">
+                <On Platform="Android" Value="#212121"/>
+                <On Platform="iOS" Value="#333333"/>
+            </OnPlatform>
+
             <Thickness x:Key="margemVertical" Left="0"  Top="8" Right="0" Bottom="0" />
             <Thickness x:Key="listItem_iOS_margemEsquerda" Left="8" Top="0" Right="0" Bottom="0"/>
         </ResourceDictionary>
