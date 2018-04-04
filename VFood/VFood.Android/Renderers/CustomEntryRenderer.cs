@@ -1,5 +1,6 @@
 ﻿using Android.Content;
 using Android.Text;
+using Android.Views.InputMethods;
 using VFood.CustomViews;
 using VFood.Droid.Renderers;
 using Xamarin.Forms;
@@ -18,11 +19,42 @@ namespace VFood.Droid.Renderers
         {
             base.OnElementChanged(e);
 
-            var customElement = Element as CustomEntry;
+            var customEntry = Element as CustomEntry;
 
-            if (customElement.MaxLength != null)
+            if (customEntry.MaxLength != null)
             {
-                Control.SetFilters(new IInputFilter[] { new InputFilterLengthFilter(customElement.MaxLength.Value) });
+                Control.SetFilters(new IInputFilter[] { new InputFilterLengthFilter(customEntry.MaxLength.Value) });
+            }
+
+
+        }
+
+        private void SetReturnType(CustomEntry entry)
+        {
+            ReturnType type = entry.ReturnType;
+
+            switch (type)
+            {
+                case ReturnType.Go:
+                    Control.ImeOptions = ImeAction.Go;
+                    //Control.SetImeActionLabel(Context.GetText(Resource.String.textIr), ImeAction.Go);
+                    break;
+                case ReturnType.Next:
+                    Control.ImeOptions = ImeAction.Next;
+                    //Control.SetImeActionLabel(Context.GetText(Resource.String.textProximo), ImeAction.Next);
+                    break;
+                case ReturnType.Send:
+                    Control.ImeOptions = ImeAction.Send;
+                    //Control.SetImeActionLabel(Context.GetText(Resource.String.textEnviar), ImeAction.Send);
+                    break;
+                case ReturnType.Search:
+                    Control.ImeOptions = ImeAction.Search;
+                    //Control.SetImeActionLabel(Context.GetText(Resource.String.textBuscar), ImeAction.Search);
+                    break;
+                default:
+                    Control.ImeOptions = ImeAction.Done;
+                    //Control.SetImeActionLabel("Done", ImeAction.Done);
+                    break;
             }
         }
     }
